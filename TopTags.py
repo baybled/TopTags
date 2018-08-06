@@ -71,7 +71,7 @@ def main():
 	'''
 
 	if len(sys.argv) > 0:
-		term = sys.argv[1]
+		term = sys.argv[1:]
 	else:
 		term = 'trump'
 
