@@ -11,5 +11,5 @@ Usage: python TopTags.py pillow
  
 [Most used hashtags]
  
-[Requests remaining]`
+[Requests remaining]
 ```
