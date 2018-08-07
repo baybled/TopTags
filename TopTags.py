@@ -56,21 +56,20 @@ class User:
 				if len(hashtags) > 0:
 					hashlist.append('#{}'.format(hashtags[0]['text']))
 
-		# Find top 3
-		tuples = Counter(hashlist).most_common(3)
-		hashlist.clear()
 
-		# Unpack list of tuples from (value, occurence)
-		for key, value in tuples:
-			hashlist.append(key)
-		return ' '.join(hashlist)
+		returns = []
+
+		# Unpack top 3 from (value, occurence)
+		for key, value in Counter(hashlist).most_common(3):
+			returns.append(key)
+		return ' '.join(returns)
 
 def main():
 	'''
 	Find single user, print relavent information
 	'''
 
-	if len(sys.argv) > 0:
+	if len(sys.argv) > 1:
 		term = ' '.join(sys.argv[1:])
 	else:
 		term = 'trump'
