@@ -28,34 +28,38 @@ class User:
 		self.term = twitter.search(q=term, count=1, tweet_mode='extended')
 
 	# unpack API response for: id, user description, tweet found, name and username
+	@property
 	def id(self):
 		return self.term['statuses'][0]['user']['id']
 
+	@property
 	def description(self):
 		return self.term['statuses'][0]['user']['description'].replace('  ', '')
 
+	@property
 	def tweet(self):
 		return self.term['statuses'][0]['full_text'].rstrip('"').replace('\n', ' ')
-
+	
+	@property
 	def name(self):
 		return self.term['statuses'][0]['user']['name']
 
+	@property
 	def uname(self):
 		return self.term['statuses'][0]['user']['screen_name']
 
 	# Find hashtags by searching through ID from API response
 	def hashtags(self):
 		hashlist = []
-		temp = twitter.get_user_timeline(id=self.id(), count=1)
+		temp = twitter.get_user_timeline(id=self.id, count=1)
 		
 		# Continuously search through history, breaking through 200 tweet response limit
 		while len(temp) != 0:
-			temp = twitter.get_user_timeline(id=self.id(), count=200, max_id=temp[len(temp) -1]['id'] -1)
+			temp = twitter.get_user_timeline(id=self.id, count=200, max_id=temp[len(temp) -1]['id'] -1)
 			for i in range(len(temp)):
 				hashtags = temp[i]['entities']['hashtags']
 				if len(hashtags) > 0:
 					hashlist.append('#{}'.format(hashtags[0]['text']))
-
 
 		returns = []
 
@@ -63,6 +67,7 @@ class User:
 		for key, value in Counter(hashlist).most_common(3):
 			returns.append(key)
 		return ' '.join(returns)
+
 
 def main():
 	'''
@@ -76,12 +81,14 @@ def main():
 
 	user = User(term)
 
-	# Look in the format brackets to see what's printing
-	print('{} aka {} - {} \n\n{}\n'.format(user.name(), user.uname(), user.description(), user.tweet()))
+	# print [name] aka [screenname] - [description] [tweet]
+	print('{} aka {} - {} \n\n{}\n'.format(user.name, user.uname, user.description, user.tweet))
 
 	print('I mostly use: {}'.format(user.hashtags()))
 
 	print('\nRemaining searches: {}'.format(twitter.get_lastfunction_header('x-rate-limit-remaining')))
+
+	sys.exit()
 
 if __name__=="__main__":
 	try:
