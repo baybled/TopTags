@@ -6,15 +6,17 @@ from twython import Twython
 import sys
 
 # PRAW Authenticate
-reddit = praw.Reddit(client_id=CToptions.CLIENT_ID,
-					 client_secret=CToptions.CLIENT_SECRET,
-					 password=CToptions.PASSWORD,
-					 user_agent=CToptions.USER_AGENT,
+reddit = praw.Reddit(client_id=CToptions.CLIENT_ID,\
+					 client_secret=CToptions.CLIENT_SECRET,\
+					 password=CToptions.PASSWORD,\
+					 user_agent=CToptions.USER_AGENT,\
 					 username=CToptions.USERNAME)
 
 # Twython Authenticate
-twitter = Twython(CToptions.APP_KEY, CToptions.APP_SECRET,
-                  CToptions.OAUTH_TOKEN, CToptions.OAUTH_TOKEN_SECRET)
+twitter = Twython(CToptions.APP_KEY,\
+				  CToptions.APP_SECRET,\
+                  CToptions.OAUTH_TOKEN, \
+                  CToptions.OAUTH_TOKEN_SECRET)
 
 # Pushbullet Authenticate
 pb = Pushbullet(CToptions.API_KEY)
@@ -23,6 +25,7 @@ class User:
 	'''
 	This finds a user, returns their most used hashtags and fills in name, id, tweet, etc.
 	'''
+	
 	def __init__(self, term):
 		self.User = User
 		self.term = twitter.search(q=term, count=1, tweet_mode='extended')
@@ -34,7 +37,10 @@ class User:
 
 	@property
 	def description(self):
-		return self.term['statuses'][0]['user']['description'].replace('  ', '')
+		if len(self.term['statuses'][0]['user']['description']) > 0:
+			return ' - {}'.format(self.term['statuses'][0]['user']['description'].replace('  ', ''))
+		else:
+			return
 
 	@property
 	def tweet(self):
@@ -42,11 +48,7 @@ class User:
 	
 	@property
 	def name(self):
-		return self.term['statuses'][0]['user']['name']
-
-	@property
-	def uname(self):
-		return self.term['statuses'][0]['user']['screen_name']
+		return '{} aka {}'.format(self.term['statuses'][0]['user']['name'], self.term['statuses'][0]['user']['screen_name'])
 
 	# Find hashtags by searching through ID from API response
 	def hashtags(self):
@@ -81,8 +83,7 @@ def main():
 
 	user = User(term)
 
-	# print [name] aka [screenname] - [description] [tweet]
-	print('{} aka {} - {} \n\n{}\n'.format(user.name, user.uname, user.description, user.tweet))
+	print('{}{} \n\n{}\n'.format(user.name, user.description, user.tweet))
 
 	print('I mostly use: {}'.format(user.hashtags()))
 
@@ -95,4 +96,3 @@ if __name__=="__main__":
 		main()
 	except Exception as e:
 		print(e)
-
