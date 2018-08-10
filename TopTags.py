@@ -30,13 +30,23 @@ class User:
 		self.User = User
 		self.term = twitter.search(q=term, count=1, tweet_mode='extended')
 
-	# unpack API response for: id, user description, tweet found, name and username
+	# unpack API response for: name and screenname, description and tweet
+
 	@property
-	def id(self):
-		return self.term['statuses'][0]['user']['id']
+	def name(self):
+
+		# if no name or screenname is found, don't display innapropriate text
+		if len(self.term['statuses'][0]['user']['name']) == 0:
+			return self.term['statuses'][0]['user']['screen_name']
+		elif len(self.term['statuses'][0]['user']['screen_name']) == 0:
+			return self.term['statuses'][0]['user']['name']
+		else:
+			return '{} aka {}'.format(self.term['statuses'][0]['user']['name'], self.term['statuses'][0]['user']['screen_name'])
 
 	@property
 	def description(self):
+
+		# if no descriptions returned, don't display innapropriate text
 		if len(self.term['statuses'][0]['user']['description']) > 0:
 			return ' - {}'.format(self.term['statuses'][0]['user']['description'].replace('  ', ''))
 		else:
@@ -46,18 +56,14 @@ class User:
 	def tweet(self):
 		return self.term['statuses'][0]['full_text'].rstrip('"').replace('\n', ' ')
 	
-	@property
-	def name(self):
-		return '{} aka {}'.format(self.term['statuses'][0]['user']['name'], self.term['statuses'][0]['user']['screen_name'])
-
 	# Find hashtags by searching through ID from API response
 	def hashtags(self):
 		hashlist = []
-		temp = twitter.get_user_timeline(id=self.id, count=1)
+		temp = twitter.get_user_timeline(id=self.term['statuses'][0]['user']['id'], count=1)
 		
 		# Continuously search through history, breaking through 200 tweet response limit
 		while len(temp) != 0:
-			temp = twitter.get_user_timeline(id=self.id, count=200, max_id=temp[len(temp) -1]['id'] -1)
+			temp = twitter.get_user_timeline(id=self.term['statuses'][0]['user']['id'], count=200, max_id=temp[len(temp) -1]['id'] -1)
 			for i in range(len(temp)):
 				hashtags = temp[i]['entities']['hashtags']
 				if len(hashtags) > 0:
@@ -68,7 +74,12 @@ class User:
 		# Unpack top 3 from (value, occurence)
 		for key, value in Counter(hashlist).most_common(3):
 			returns.append(key)
-		return ' '.join(returns)
+		
+		# If no tags returned, don't display innapropriate text
+		if len(returns) > 0:
+			return 'I mostly use: {}'.format(' '.join(returns))
+		else:
+			return
 
 
 def main():
@@ -77,15 +88,13 @@ def main():
 	'''
 
 	if len(sys.argv) > 1:
-		term = ' '.join(sys.argv[1:])
+		user = User(' '.join(sys.argv[1:]))
 	else:
-		term = 'trump'
-
-	user = User(term)
+		user = User('trump')
 
 	print('{}{} \n\n{}\n'.format(user.name, user.description, user.tweet))
 
-	print('I mostly use: {}'.format(user.hashtags()))
+	print('{}'.format(user.hashtags()))
 
 	print('\nRemaining searches: {}'.format(twitter.get_lastfunction_header('x-rate-limit-remaining')))
 
