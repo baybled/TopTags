@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+found!
+{% endblock %}
+
+{% block content %}
+<h1>I'm {{ name }}</h1>
+<h1>{{ tweet }}</h1>
+{% if hashtags is not none %}
+<h2>{{ hashtags }}</h2>
+{% endif %}
+<h2>Queries remaining: {{ remaining }}</h2>
+{% endblock %}
