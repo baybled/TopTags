@@ -5,10 +5,26 @@ found!
 {% endblock %}
 
 {% block content %}
-<h1>I'm {{ name }}</h1>
-<h1>{{ tweet }}</h1>
-{% if hashtags is not none %}
-<h2>{{ hashtags }}</h2>
-{% endif %}
-<h2>Queries remaining: {{ remaining }}</h2>
+	{% block body %}
+		{% block page_content %}
+		Queries remaining: {{ remaining }}<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-4 align-items-start">
+					<img src='{{ pic }}'> 
+					{% if hashtags is not none %}
+						<h2>{{ hashtags }}</h2>
+					{% endif %}
+					<br>
+				</div>
+				<div class="col-8 align-items-end">
+					<h3>I'm {{ name }}<br></h3>
+					{% if description is not none %}
+						<h4>{{ description }}<br></h4>
+					{% endif %}
+					<h4>{{ tweet }}</h4>
+				</div>
+			</div>
+		{% endblock %}
+	{% endblock %}
 {% endblock %}
