@@ -7,22 +7,39 @@ found!
 {% block content %}
 	{% block body %}
 		{% block page_content %}
-		Queries remaining: {{ remaining }}<br>
+		<div class="remaining">
+		{{ remaining }} queries left<br>
+		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-4 align-items-start">
-					<img src='{{ pic }}'> 
-					{% if hashtags is not none %}
-						<h2>{{ hashtags }}</h2>
-					{% endif %}
-					<br>
-				</div>
-				<div class="col-8 align-items-end">
-					<h3>I'm {{ name }}<br></h3>
-					{% if description is not none %}
+				<form class="form-inline" id="query" action="/" method="POST">
+					<input type="text" placeholder="Enter a term to search" height="100" size="45">
+				</form>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+			<div class="row">
+				<div class="col-5 left">
+					<a href="{{ url }}">
+						<img id="image" src='{{ pic }}'> 
+					</a>
+					<div class="name">
+						<h3>I'm {{ name }}</h3>
+						<div class="description">
+						{% if description is not none %}
 						<h4>{{ description }}<br></h4>
-					{% endif %}
-					<h4>{{ tweet }}</h4>
+						{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="col-6 right">
+					<div class="tags">
+							{% if hashtags is not none %}
+								<h2>{{ hashtags }}</h2>
+							{% endif %}
+					</div>
+					<div class="tweet">
+						<h4>{{ tweet }}</h4>
+					</div>
 				</div>
 			</div>
 		{% endblock %}
