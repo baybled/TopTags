@@ -17,7 +17,16 @@ class User:
 		self.User = User
 		self.term = twitter.search(q=term, count=1, tweet_mode='extended')
 
-	# unpack API response for: name and screenname, description and tweet
+	# return response for debugging
+	@property
+	def debug(self):
+		return self.term
+
+	# unpack API response for: picture, name, screenname, description, url and tweet
+	@property
+	def pic(self):
+		size = '400x400'
+		return self.term['statuses'][0]['user']['profile_image_url_https'].replace('normal', size)
 
 	@property
 	def name(self):
@@ -25,8 +34,6 @@ class User:
 		# if no name or screenname is found, don't display innapropriate text
 		if len(self.term['statuses'][0]['user']['name']) == 0:
 			return self.term['statuses'][0]['user']['screen_name']
-		elif len(self.term['statuses'][0]['user']['screen_name']) == 0:
-			return self.term['statuses'][0]['user']['name']
 		else:
 			return '{} aka {}'.format(self.term['statuses'][0]['user']['name'], self.term['statuses'][0]['user']['screen_name'])
 
@@ -38,6 +45,10 @@ class User:
 			return ' - {}'.format(self.term['statuses'][0]['user']['description'].replace('  ', ''))
 		else:
 			return
+
+	@property
+	def url(self):
+		return 'https://twitter.com/{}'.format(self.term['statuses'][0]['user']['screen_name'])
 
 	@property
 	def tweet(self):
