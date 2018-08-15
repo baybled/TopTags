@@ -24,7 +24,7 @@ def index():
 def query(term):
 	try:
 		user = User(term)
-		return render_template('query.html', term=term, name=user.name, description=user.description, tweet=user.tweet, hashtags=user.hashtags(), remaining=user.remaining())
+		return render_template('query.html', url=user.url, pic=user.pic, name=user.name, description=user.description, tweet=user.tweet, hashtags=user.hashtags(), remaining=user.remaining())
 	except Exception as e:
 		internal_server_error(e)
 
