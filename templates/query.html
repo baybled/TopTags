@@ -10,17 +10,20 @@ found!
 		<div class="remaining">
 		{{ remaining }} queries left<br>
 		</div>
-		<div class="container">
+		<div class="container" id="query-container">
 			<div class="row">
-				<form class="form-inline" id="query" action="/" method="POST">
-					<input type="text" placeholder="Enter a term to search" height="100" size="45">
+				<form class="form-inline" id="query" name="term" action="/query" method="POST">
+					<input type="text" name="term" placeholder="Search by keyword or username e.g. 'trump' OR POTUS" size="47">
 				</form>
 				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+			<div class="row term">
+				<h1>found: {{ term }} </h1>
 			</div>
 			<div class="row">
 				<div class="col-5 left">
 					<a href="{{ url }}">
-						<img id="image" src='{{ pic }}'> 
+						<img id="image" atl="Profile picture" src='{{ pic }}'> 
 					</a>
 					<div class="name">
 						<h3>I'm {{ name }}</h3>
@@ -31,7 +34,7 @@ found!
 						</div>
 					</div>
 				</div>
-				<div class="col-6 right">
+				<div class="col-6 right speech-bubble">
 					<div class="tags">
 							{% if hashtags is not none %}
 								<h2>{{ hashtags }}</h2>
