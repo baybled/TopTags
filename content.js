@@ -2,8 +2,10 @@ console.log('This test is working');
 // object that fetches and tallies
 
 function logic() {
-	let bio = document.getElementByClassName('ProfileHeaderCard-bio')
-	console.log(bio.innerHTML)
+	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
+	console.log(bio.innerHTML);
+	console.log(bio.innerText);
+	console.log(bio);
 };
 
 logic();
