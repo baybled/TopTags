@@ -5,7 +5,7 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"*://*twitter*"
+				"*://*.twitter.com/*"
 			],
 			"js": ["content.js"]
 		}
