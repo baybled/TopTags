@@ -5,7 +5,9 @@ function addBio(array) {
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
 	// adds text
-	bio.innerHTML += '<br>' + 'I mostly use' + array[2] + ', ' array[1] + ', ' + 'and ' + array[0];
+	let string = '<br>' + 'I mostly use' + array[2] + ', ' array[1] + ', ' + 'and ' + array[0];
+	
+	bio.innerHTML += string;
 };
 
 function findTags () {
