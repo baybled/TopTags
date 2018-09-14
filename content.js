@@ -1,11 +1,11 @@
 /* Finds hashtags on page and return stop three */
 
-function addBio(your_text_here) {
+function addBio(array) {
 	// finds the bio
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
 	// adds text
-	bio.innerHTML += '<br>' + your_text_here;
+	bio.innerHTML += '<br>' + 'I mostly use' + tags[2] + ', ' tags[1] + ', ' + 'and ' + tags[0];
 };
 
 function findTags () {
@@ -49,5 +49,5 @@ function main() {
 
 	console.log(tags);
 
-	addBio('I mostly use' + tags[2] + ', ' tags[1] + ', ' + 'and ' + tags[0])
+	addBio();
 }
