@@ -52,4 +52,6 @@ function main() {
 	console.log(tags);
 
 	addBio(tags);
-}
+};
+
+main();
