@@ -3,7 +3,7 @@
 function logic(your_text_here) {
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 	console.log(bio.innerHTML);
-	bio.innerHTML += your_text_here;
+	bio.innerHTML += '<br><br>' + your_text_here;
 };
 
 let hashtags = document.getElementsByClassName('twitter-hashtag')
