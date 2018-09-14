@@ -27,6 +27,7 @@ function findTags () {
 	return matches;
 
 	}
+};
 
 function sortByFrequency(array) {
 	var frequency = {};
