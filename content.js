@@ -44,16 +44,21 @@ function sortByFrequency(array) {
 		function(a, b) { return frequency[b] - frequency[a]; });
 };
 
+function topThree(array) {
+
+	array.sort();
+}
+
 function main() {
 
 	let tags = findTags();
 
-	sortByFrequency(tags);
+	array.sort()
 
 	for (one in tags) {
 		console.log(tags[one]);
 	}
-	
+
 	addBio(tags);
 };
 
