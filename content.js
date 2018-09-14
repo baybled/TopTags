@@ -53,7 +53,7 @@ function main() {
 
 	let tags = findTags();
 
-	array.sort()
+	tags.sort()
 
 	for (one in tags) {
 		console.log(tags[one]);
