@@ -5,9 +5,9 @@ function addBio(array) {
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
 	// adds text
-	let string = '<br>'.concat('I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);
+	let string = 
 	
-	bio.innerHTML += string;
+	bio.innerHTML += '<br>'.concat('<br>', 'I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);;
 };
 
 function findTags () {
@@ -50,8 +50,10 @@ function main() {
 
 	sortByFrequency(tags);
 
-	console.log(tags);
-
+	for (one in tags) {
+		console.log(tags[one]);
+	}
+	
 	addBio(tags);
 };
 
