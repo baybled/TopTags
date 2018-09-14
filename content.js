@@ -18,7 +18,7 @@ function findTags () {
 	// extracts it into array 
 	let pattern = RegExp('<b>(.+)</b>');
 
-	let matches = [];
+	let match = [];
 
 	for (one in hashtags) {
 
