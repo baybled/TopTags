@@ -7,7 +7,7 @@
 			"matches": [
 				"*://*.twitter.com/*"
 			],
-			"js": ["content.js"]
+			"js": ["content.js", "js/lib/jquery.js"]
 		}
 	]
 }
