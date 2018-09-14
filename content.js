@@ -55,8 +55,8 @@ function main() {
 
 	tags.sort()
 
-	for (one in tags) {
-		console.log(tags[one]);
+	for (let one of tags) {
+		console.log(one);
 	}
 
 	addBio(tags);
