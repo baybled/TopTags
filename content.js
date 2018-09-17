@@ -4,9 +4,6 @@ function addBio(array) {
 	// finds the bio
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
-	// adds text
-	let string = 
-	
 	bio.innerHTML += '<br>'.concat('<br>', 'I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);;
 };
 
@@ -16,7 +13,7 @@ function findTags () {
 	let hashtags = document.getElementsByClassName('twitter-hashtag');
 
 	// extracts it into array 
-	let pattern = RegExp('<b>(.+)</b>');
+	let pattern = new RegExp('<b>(.+)</b>');
 
 	let matches = [];
 
@@ -29,37 +26,62 @@ function findTags () {
 	}
 };
 
-function sortByFrequency(array) {
-	var frequency = {};
-	// set all initial frequencies for each word to zero
-	array.forEach(
-		function(value) { frequency[value] = 0; });
+function wordsToFreqObjs(array) {
+	// Arranges strings in array into array of objects, counting frequency of occurence
 
-	// create new array with words and their frequencies
-	var uniques = array.filter(
-		function(value) { return ++frequency[value] == 1; });
+	let freqObjs = [];
 
-	// sort words by abc order
-	return uniques.sort(
-		function(a, b) { return frequency[b] - frequency[a]; });
-};
+	for (word of array) {
+		// For each word, create a count of 1 and add to it, splicing duplicates out, and add it to final frequency array
+
+		let freq = 1;
+		for (num in array) {
+
+			// trigger for increasing count
+			if (array[num] == word) {
+				count++;
+				array.splice(num, 1);
+			}
+
+		freqObjs.push({word: word, count: freq})
+	}
+
+	return freqObjs;
+}
 
 function topThree(array) {
+	// go through array, find top and eliminate it into a new array
 
-	array.sort();
+	let routine = 3
+	let topThree;
+
+	while (routine != 0) {
+		let top = 0;
+		let pos = 0;
+
+		for (obj in freqObjs) {
+
+			// trigger for finding top one
+			if (freqObj[obj].count > top) {
+				top = obj.count;
+				position = obj;
+			}
+		}
+
+		// splicing
+		topThree.push(freqObjs[pos].word)
+		freqObjs.splice(pos, 1);
+		routine--;
+	}
+
+	return topThree;
 }
 
 function main() {
 
 	let tags = findTags();
 
-	tags.sort()
-
-	for (let one of tags) {
-		console.log(one);
-	}
-
-	addBio(tags);
+	console.log(tags);
 };
 
 main();
