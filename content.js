@@ -19,16 +19,16 @@ function findTags () {
 	// extracts it into array 
 	let pattern = /hashtag\/(.+)\?/;
 
-	let matches = [];
+	let matches = {};
 
 	for (let one of hashtags.entries()) {
 
 		let word = pattern.exec(one)[1];
 
-		if (matches.${word} !== undefined) {
-			matches.${word}++;
+		if (matches.word === undefined) {
+			matches.push(word : 1);
 		} else {
-			matches.push({${word} : 1});
+			matches.word++;
 		}
 	}
 
