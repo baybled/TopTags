@@ -25,10 +25,10 @@ function findTags () {
 
 		let word = pattern.exec(one)[1];
 
-		if (matches.word !== undefined) {
-			matches.word++;
+		if (matches.`${word}` !== undefined) {
+			matches.`${word}`++;
 		} else {
-			matches.push({word : 1});
+			matches.push({`${word}` : 1});
 		}
 	}
 
