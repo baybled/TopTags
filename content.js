@@ -26,7 +26,7 @@ function findTags () {
 		let word = pattern.exec(one)[1];
 
 		if (matches.word === undefined) {
-			matches.push({key: word, value : 1});
+			matches.word = 1;
 		} else {
 			matches.word++;
 		}
