@@ -23,7 +23,11 @@ function findTags () {
 
 	for (let one of hashtags) {
 
+		console.log(`BEFORE: ${one}`);
+
 		matches.push(pattern.exec(one.innerHTML));
+
+		console.log(pattern.exec(one.innerHTML));
 
 	return matches;
 
@@ -87,9 +91,6 @@ function main() {
 
 	let tag = findTags();
 
-	for (let one in tag) {
-		addBio(tag[one]);
-	}
 }
 
 main();
