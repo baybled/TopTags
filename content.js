@@ -7,7 +7,7 @@ function addBio(word) {
 
 	// bio.innerHTML += '<br>'.concat('<br>', 'I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);
 
-	bio.innerHTML += word
+	bio.innerHTML += word;
 }
 
 function findTags () {
@@ -26,7 +26,7 @@ function findTags () {
 		let word = pattern.exec(one)[1];
 
 		if (matches.word === undefined) {
-			matches.push(word : 1);
+			matches.push({word : 1});
 		} else {
 			matches.word++;
 		}
