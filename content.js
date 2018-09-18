@@ -85,9 +85,7 @@ function main() {
 
 	let tag = findTags();
 
-	for (let one of tag) {
-		console.log(one);
-	}
+	addBio(tag);
 }
 
 main();
