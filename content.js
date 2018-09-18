@@ -75,5 +75,6 @@ function topThree(array) {
 	}
 
 	return topThree;
-}
+};
 
+let tag = findTags();
