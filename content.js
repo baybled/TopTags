@@ -67,7 +67,7 @@ function main() {
 	let tag = findTags();
 
 	for (let key of Object.entries(tag)) {
-		console.log(key, value)
+		console.log(key)
 	}
 
 	let top = topThree(tag)
