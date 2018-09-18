@@ -23,12 +23,13 @@ function findTags () {
 
 	for (let one of hashtags.entries()) {
 
-		console.log(`BEFORE: ${one}`);
+		let word = pattern.exec(one)[1];
 
-		matches.push(pattern.exec(one)[1]);
-
-		console.log(`AFTER: ${pattern.exec(one)[1]}`);
-
+		if (matches.word !== undefined) {
+			matches.word++;
+		} else {
+			matches.push(word : 1);
+		}
 	}
 
 	return matches;
@@ -90,6 +91,10 @@ function main() {
 	'use strict';
 
 	let tag = findTags();
+
+	for (let one of tag) {
+		console.log(one);
+	}
 
 }
 
