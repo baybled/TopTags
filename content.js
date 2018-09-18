@@ -92,7 +92,7 @@ function main() {
 
 	let tag = findTags();
 
-	for (let one of tag) {
+	for (let one of tag.entries()) {
 		console.log(one);
 	}
 
