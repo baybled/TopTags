@@ -27,7 +27,7 @@ function findTags () {
 
 		matches.push(pattern.exec(one)[1]);
 
-		console.log(`AFTER ${pattern.exec(one)[1]}`);
+		console.log(`AFTER: ${pattern.exec(one)[1]}`);
 
 	}
 
