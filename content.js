@@ -23,6 +23,7 @@ function findTags () {
 	for (let one of hashtags.entries()) {
 
 		// extract word from pattern found
+		try {
 		let word = pattern.exec(one)[1];
 		} catch (err) {
 			console.log(pattern.exec(one));
