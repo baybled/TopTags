@@ -81,7 +81,9 @@ function main() {
 
 	let tags = findTags();
 
-	console.log(tags);
+	for (one of tags) {
+		console.log(one);
+	}
 };
 
 main();
