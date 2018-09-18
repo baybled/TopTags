@@ -16,18 +16,23 @@ function findTags () {
 	'use strict';
 	let hashtags = document.querySelectorAll('.twitter-hashtag');
 
-	// extracts it into array 
 	let pattern = /hashtag\/(.+)\?/;
 
 	let matches = {};
 
 	for (let one of hashtags.entries()) {
 
+		// extract word from pattern found
 		let word = pattern.exec(one)[1];
 
+		// Test if in dict
 		if (matches[`${word}`] === undefined) {
+
+			// Trigger for new word
 			matches[`${word}`]  = 1;
 		} else {
+
+			// Trigger for increasing count
 			matches[`${word}`]++;
 		}
 	}
@@ -35,37 +40,13 @@ function findTags () {
 	return matches;
 }
 
-function wordsToFreqObjs(array) {
-	// Arranges strings in array into array of objects, counting frequency of occurence
-	'use strict';
-	let freqObjs = [];
-
-	for (let word of array) {
-		// For each word, create a count of 1 and add to it, splicing duplicates out, and add it to final frequency array
-
-		let freq = 1;
-		for (let num in array) {
-
-			// trigger for increasing count
-			if (array[num] == word) {
-				freq++;
-				array.splice(num, 1);
-			}
-
-		freqObjs.push({word: `${word}`, count: freq});
-	}
-
-	}
-	return freqObjs;
-}
-
-function topThree(array) {
+function topThree(dict) {
 	// go through array, find top and eliminate it into a new array
 	'use strict';
 	let routine = 3;
 	let topThree;
 
-	while (routine !== 0) {
+	while (routine-- !== 0) {
 		let top = 0;
 		let pos = 0;
 
@@ -81,7 +62,6 @@ function topThree(array) {
 		// splicing
 		topThree.push(array[pos].word);
 		array.splice(pos, 1);
-		routine--;
 	}
 
 	return topThree;
