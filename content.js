@@ -25,9 +25,9 @@ function findTags () {
 
 		console.log(`BEFORE: ${one}`);
 
-		matches.push(pattern.exec(one));
+		matches.push(pattern.exec(one)[1]);
 
-		console.log(pattern.exec(one));
+		console.log(pattern.exec(one)[1]);
 
 	}
 
