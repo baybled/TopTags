@@ -25,7 +25,6 @@ function findTags () {
 		// escape errors
 		if (pattern.exec(one) !== null) {
 	
-			// extract word from pattern found
 			let word = pattern.exec(one)[1];
 
 			// Test if in dict
@@ -45,30 +44,21 @@ function findTags () {
 }
 
 function topThree(dict) {
-	// go through array, find top and eliminate it into a new array
+	// sort dictionary by value
 	'use strict';
-	let routine = 3;
-	let topThree;
 
-	while (routine-- !== 0) {
-		let top = 0;
-		let pos = 0;
+	// Create array
+	var array = Object.keys(dict).map(function(key) {
+	  return [key, dict[key]];
+	});
 
-		for (let obj in array) {
+	// Sort the array based on the second element
+	array.sort(function(first, second) {
+	  return second[1] - first[1];
+	});
 
-			// trigger for finding top one
-			if (array[obj].count > top) {
-				top = obj.count;
-				pos = obj;
-			}
-		}
-
-		// splicing
-		topThree.push(array[pos].word);
-		array.splice(pos, 1);
-	}
-
-	return topThree;
+	// return new array with only the first 3 items
+	return array.slice(0, 3);
 }
 
 function main() {
@@ -77,7 +67,13 @@ function main() {
 	let tag = findTags();
 
 	for (let key of Object.entries(tag)) {
-		console.log(key);
+		console.log(key, value)
+	}
+
+	let top = topThree(tag)
+
+	for (let each of top) {
+		console.log(top)
 	}
 
 }
