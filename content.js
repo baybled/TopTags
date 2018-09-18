@@ -23,22 +23,21 @@ function findTags () {
 	for (let one of hashtags.entries()) {
 
 		// escape errors
-		if (pattern.exec(one) === null) {
-			break;
-		}
-		
-		// extract word from pattern found
-		let word = pattern.exec(one)[1];
+		if (pattern.exec(one)[1] !== undefined) {
+	
+			// extract word from pattern found
+			let word = pattern.exec(one)[1];
 
-		// Test if in dict
-		if (matches[`${word}`] === undefined) {
+			// Test if in dict
+			if (matches[`${word}`] === undefined) {
 
-			// Trigger for new word
-			matches[`${word}`]  = 1;
-		} else {
+				// Trigger for new word
+				matches[`${word}`]  = 1;
+			} else {
 
-			// Trigger for increasing count
-			matches[`${word}`]++;
+				// Trigger for increasing count
+				matches[`${word}`]++;
+			}
 		}
 	}
 
