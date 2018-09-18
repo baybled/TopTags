@@ -25,9 +25,11 @@ function findTags () {
 		try {
 		// extract word from pattern found
 		let word = pattern.exec(one)[1];
-	} catch (err) {
-		let word = pattern.exec(one);
-	}
+		} catch (err) {
+			console.log(pattern.exec(one));
+			let word = word;
+		}
+
 		// Test if in dict
 		if (matches[`${word}`] === undefined) {
 
