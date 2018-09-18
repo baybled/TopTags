@@ -2,10 +2,10 @@
 
 function addBio(array) {
 	// finds the bio
-	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
+	use strict let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
-	bio.innerHTML += '<br>'.concat('<br>', 'I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);;
-};
+	bio.innerHTML += '<br>'.concat('<br>', 'I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);
+}
 
 function findTags () {
 
@@ -24,7 +24,7 @@ function findTags () {
 	return matches;
 
 	}
-};
+}
 
 function wordsToFreqObjs(array) {
 	// Arranges strings in array into array of objects, counting frequency of occurence
@@ -47,7 +47,7 @@ function wordsToFreqObjs(array) {
 	}
 
 	return freqObjs;
-};
+}
 
 function topThree(array) {
 	// go through array, find top and eliminate it into a new array
@@ -75,6 +75,6 @@ function topThree(array) {
 	}
 
 	return topThree;
-};
+}
 
 let tag = findTags();
