@@ -15,7 +15,7 @@ function findTags () {
 	let hashtags = document.getElementsByClassName('twitter-hashtag');
 
 	// extracts it into array 
-	let pattern = new RegExp('<b>(.+)</b>');
+	let pattern = /<b>(.+)<\/b>/;
 
 	let matches = [];
 
