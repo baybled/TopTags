@@ -6,9 +6,9 @@ function addBio(array) {
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
 	if (array.length > 1) {
-		bio.innerHTML += `<br>I'm using #${array[0][0]}, #${array[1][0]} and #${array[2][0]}`;
+		bio.innerHTML += `<br><span style="color: blue">I'm using #${array[0][0]}, #${array[1][0]} and #${array[2][0]}</span>`;
 	} else {
-		bio.innerHTML += `<br>I'm using #${array[0][0]}`;
+		bio.innerHTML += `<br><span style="color: blue">I'm using #${array[0][0]}</span>`;
 	}
 }
 
