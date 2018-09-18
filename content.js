@@ -25,10 +25,10 @@ function findTags () {
 
 		let word = pattern.exec(one)[1];
 
-		if (matches.word === undefined) {
-			matches.word = 1;
+		if (matches[`${word}`] === undefined) {
+			matches[`${word}`]  = 1;
 		} else {
-			matches.word++;
+			matches[`${word}`]++;
 		}
 	}
 
@@ -52,7 +52,7 @@ function wordsToFreqObjs(array) {
 				array.splice(num, 1);
 			}
 
-		freqObjs.push({word: word, count: freq});
+		freqObjs.push({word: `${word}`, count: freq});
 	}
 
 	}
