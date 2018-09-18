@@ -19,9 +19,9 @@ function findTags () {
 
 	let matches = [];
 
-	for (let one in hashtags) {
+	for (let one of hashtags) {
 
-		matches.push(pattern.exec(hashtags[one].innerHTML));
+		matches.push(pattern.exec(one.innerHTML));
 
 	return matches;
 
