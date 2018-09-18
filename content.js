@@ -17,7 +17,7 @@ function findTags () {
 	let hashtags = document.querySelectorAll('.twitter-hashtag');
 
 	// extracts it into array 
-	let pattern = /<b>(.+)<\/b>/;
+	let pattern = /\/(.+)\?/;
 
 	let matches = [];
 
@@ -25,9 +25,9 @@ function findTags () {
 
 		console.log(`BEFORE: ${one}`);
 
-		// matches.push(pattern.exec(one.innerHTML));
+		matches.push(pattern.exec(one));
 
-		// console.log(pattern.exec(one.innerHTML));
+		console.log(pattern.exec(one));
 
 	}
 
