@@ -21,7 +21,7 @@ function findTags () {
 
 	let matches = [];
 
-	for (let one of hashtags) {
+	for (let one of hashtags.entries()) {
 
 		console.log(`BEFORE: ${one}`);
 
