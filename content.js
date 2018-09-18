@@ -14,7 +14,7 @@ function findTags () {
 
 	// finds all hashtags on page
 	'use strict';
-	let hashtags = document.getElementsByClassName('twitter-hashtag');
+	let hashtags = document.querySelectorAll('.twitter-hashtag');
 
 	// extracts it into array 
 	let pattern = /<b>(.+)<\/b>/;
