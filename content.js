@@ -77,13 +77,3 @@ function topThree(array) {
 	return topThree;
 }
 
-function main() {
-
-	let tags = findTags();
-
-	for (one of tags) {
-		console.log(one);
-	}
-};
-
-main();
