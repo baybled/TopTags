@@ -47,7 +47,7 @@ function wordsToFreqObjs(array) {
 	}
 
 	return freqObjs;
-}
+};
 
 function topThree(array) {
 	// go through array, find top and eliminate it into a new array
