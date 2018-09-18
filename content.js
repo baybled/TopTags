@@ -22,13 +22,13 @@ function findTags () {
 
 	for (let one of hashtags.entries()) {
 
-		let word = 'word';
-		// extract word from pattern found
-		try {
-			word = pattern.exec(one)[1];
-		} catch (err) {
-			console.log(pattern.exec(one));
+		// escape errors
+		if (pattern.exec(one) === null) {
+			break;
 		}
+		
+		// extract word from pattern found
+		let word = pattern.exec(one)[1];
 
 		// Test if in dict
 		if (matches[`${word}`] === undefined) {
