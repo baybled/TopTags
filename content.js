@@ -66,14 +66,10 @@ function main() {
 
 	let tag = findTags();
 
-	for (let key of Object.entries(tag)) {
-		console.log(key)
-	}
-
 	let top = topThree(tag)
 
 	for (let each in top) {
-		console.log(top[each])
+		console.log(top[each][0])
 	}
 
 }
