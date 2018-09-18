@@ -72,8 +72,8 @@ function main() {
 
 	let top = topThree(tag)
 
-	for (let each of top) {
-		console.log(top)
+	for (let each in top) {
+		console.log(top[each])
 	}
 
 }
