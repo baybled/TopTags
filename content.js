@@ -8,12 +8,12 @@ function addBio(array) {
 	// Different flow based on number of hashtags available
 	try {
 		if (array.length > 2) {
-			bio.innerHTML += `<br>I'm using <a href="https://twitter.com/hashtag/${array[0][0]}?src=hash"><span style="color: blue">#${array[0][0]}</span></a>, <a href="https://twitter.com/hashtag/${array[1][0]}?src=hash"><span style="color: blue">#${array[1][0]}</span></a> and <a href="https://twitter.com/hashtag/${array[2][0]}?src=hash"><span style="color: blue">#${array[2][0]}</span></a>`;
+			bio.innerHTML += `<br><br>I'm using <a href="https://twitter.com/hashtag/${array[0][0]}?src=hash"><span style="color: blue">#${array[0][0]}</span></a>, <a href="https://twitter.com/hashtag/${array[1][0]}?src=hash"><span style="color: blue">#${array[1][0]}</span></a> and <a href="https://twitter.com/hashtag/${array[2][0]}?src=hash"><span style="color: blue">#${array[2][0]}</span></a>.`;
 		} else {
-			bio.innerHTML += `<br>I'm using <a href="https://twitter.com/hashtag/${array[0][0]}?src=hash"><span style="color: blue">#${array[0][0]}</span></a>`;
+			bio.innerHTML += `<br><br>I'm using <a href="https://twitter.com/hashtag/${array[0][0]}?src=hash"><span style="color: blue">#${array[0][0]}</span></a>.`;
 		}
 	} catch (err) {
-		bio.innerHTML += "<br>Too little info.";
+		bio.innerHTML += "<br><br>Too little info.";
 	}
 }
 
