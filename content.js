@@ -23,7 +23,7 @@ function findTags () {
 	for (let one of hashtags.entries()) {
 
 		// escape errors
-		if (pattern.exec(one)[1] !== undefined) {
+		if (pattern.exec(one) !== null) {
 	
 			// extract word from pattern found
 			let word = pattern.exec(one)[1];
