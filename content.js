@@ -17,7 +17,7 @@ function findTags () {
 	let hashtags = document.querySelectorAll('.twitter-hashtag');
 
 	// extracts it into array 
-	let pattern = /\/(.+)\?/;
+	let pattern = /hashtag\/(.+)\?/;
 
 	let matches = [];
 
