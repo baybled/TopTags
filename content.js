@@ -22,9 +22,12 @@ function findTags () {
 
 	for (let one of hashtags.entries()) {
 
+		try {
 		// extract word from pattern found
 		let word = pattern.exec(one)[1];
-
+	} catch (err) {
+		let word = pattern.exec(one);
+	}
 		// Test if in dict
 		if (matches[`${word}`] === undefined) {
 
