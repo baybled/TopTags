@@ -1,13 +1,15 @@
 /* Finds hashtags on page and return stop three */
 
-function addBio(word) {
+function addBio(array) {
 	// finds the bio
 	'use strict';
 	let bio = document.getElementsByClassName('ProfileHeaderCard-bio')[0];
 
-	// bio.innerHTML += '<br>'.concat('<br>', 'I mostly use ', array[2], ', ', array[1], ', ', 'and ', array[0]);
-
-	bio.innerHTML += word;
+	if (array.length > 1) {
+		bio.innerHTML += `<br>I'm using #${array[0][0]}, #${array[1][0]} and #${array[2][0]}`;
+	} else {
+		bio.innerHTML += `<br>I'm using #${array[0][0]}`;
+	}
 }
 
 function findTags () {
@@ -66,11 +68,13 @@ function main() {
 
 	let tag = findTags();
 
-	let top = topThree(tag)
+	let top = topThree(tag);
 
 	for (let each in top) {
-		console.log(top[each][0])
+		console.log(top[each][0]);
 	}
+
+	addBio(top);
 
 }
 
