@@ -28,7 +28,7 @@ function findTags () {
 		if (matches.word !== undefined) {
 			matches.word++;
 		} else {
-			matches.push(word : 1);
+			matches.push({word : 1});
 		}
 	}
 
