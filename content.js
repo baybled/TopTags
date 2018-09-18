@@ -25,13 +25,13 @@ function findTags () {
 
 		console.log(`BEFORE: ${one}`);
 
-		matches.push(pattern.exec(one.innerHTML));
+		// matches.push(pattern.exec(one.innerHTML));
 
-		console.log(pattern.exec(one.innerHTML));
-
-	return matches;
+		// console.log(pattern.exec(one.innerHTML));
 
 	}
+
+	return matches;
 }
 
 function wordsToFreqObjs(array) {
