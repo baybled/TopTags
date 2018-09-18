@@ -92,8 +92,8 @@ function main() {
 
 	let tag = findTags();
 
-	for (let key, value of Object.entries(tag)) {
-		console.log(key, value);
+	for (let key of Object.entries(tag)) {
+		console.log(key);
 	}
 
 }
